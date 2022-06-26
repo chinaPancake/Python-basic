@@ -6,7 +6,7 @@ import random
 import webview
 
 windows = Tk()
-windows.geometry("1980x1640")
+windows.geometry("500x500")
 
 rpage = random.randint(1,350)
 

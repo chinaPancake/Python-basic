@@ -1,15 +1,16 @@
-import keyboard
-from keyboard import *
 from tkinter import *
 from tkinter import messagebox
+import keyboard
+
 
 def newTask():
     task = my_entry.get()
-    if task !='':
+    if task != '':
         lb.insert(END, task)
         my_entry.delete(0, 'end')
     else:
         messagebox.showwarning('warning', 'please enter some task.')
+
 def deleteTask():
     lb.delete(ANCHOR)
 
@@ -76,6 +77,7 @@ addTask_btn = Button(
 )
 addTask_btn.pack(fill=BOTH, expand=True, side=LEFT)
 
+
 delTask_btn = Button(
     button_frame,
     text='delete task',
@@ -87,8 +89,6 @@ delTask_btn = Button(
 )
 delTask_btn.pack(fill=BOTH, expand=True, side=LEFT)
 
-if keyboard.is_pressed('enter'):
-    print('enter')
-    newTask()
+window.bind('<Return>', lambda event:newTask())
 
 window.mainloop()
