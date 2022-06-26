@@ -5,9 +5,12 @@ import requests
 import random
 import webview
 
+windows = Tk()
+windows.geometry("1980x1640")
+
 rpage = random.randint(1,350)
 
-#wgranie api key z pexels
+ #wgranie api key z pexels
 PEXELS_API_KEY = '563492ad6f917000010000018b2652bcf7e841a0b049109d310692e0'
 api = API(PEXELS_API_KEY)
 
@@ -19,7 +22,6 @@ for photo in photos:
     print('photographer: ', photo.photographer)
     print(photo.original)
 
-windows = Tk()
 webview.create_window('Corgi for Oliwia', photo.original)
 webview.start()
 
