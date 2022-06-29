@@ -5,6 +5,10 @@ import requests
 import random
 import webview
 
+
+global link_check
+link_check = open('corgilink.txt', 'a+', encoding='utf-8')
+
 windows = Tk()
 windows.geometry("500x500")
 
@@ -21,6 +25,11 @@ photos = api.get_entries()
 for photo in photos:
     print('photographer: ', photo.photographer)
     print(photo.original)
+    link_check.write(photo.original + '\n')
+    if (photo.original in link_check.read()):
+        print('Te zdjecie już było')
+    else:
+        print('To nowe zdjęcie')
 
 webview.create_window('Corgi for Oliwia', photo.original)
 webview.start()

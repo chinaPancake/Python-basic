@@ -1,7 +1,5 @@
 from tkinter import *
 from tkinter import messagebox
-import keyboard
-
 
 def newTask():
     task = my_entry.get()
@@ -14,6 +12,10 @@ def newTask():
 def deleteTask():
     lb.delete(ANCHOR)
 
+def quit():
+    window.destroy()
+
+#create a window
 window = Tk()
 window.geometry('500x450+500+200')
 window.title('To-do list')
@@ -22,6 +24,7 @@ window.resizable(width=False, height=False)
 
 frame = Frame(window)
 frame.pack(pady=10)
+
 
 lb = Listbox(
     frame,
@@ -38,14 +41,7 @@ lb = Listbox(
 lb.pack(side=LEFT, fill=BOTH)
 
 task_list = [
-    'Eat apple',
-    'drink water',
-    'go gym',
-    'write software',
-    'write documentaion',
-    'take a nap',
-    'Learn smth',
-    'paint canvas'
+
 ]
 
 for item in task_list:
@@ -90,5 +86,7 @@ delTask_btn = Button(
 delTask_btn.pack(fill=BOTH, expand=True, side=LEFT)
 
 window.bind('<Return>', lambda event:newTask())
+window.bind('<Escape>', lambda event:quit())
+window.bind('<Delete>', lambda event: deleteTask())
 
 window.mainloop()
